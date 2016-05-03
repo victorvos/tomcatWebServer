@@ -13,22 +13,22 @@
   </style>
 </head>
 <body>
-<% String voornaam =  request.getParameter("voornaam");
-   String achternaam = request.getParameter("achternaam");
-   String adres = request.getParameter("adres");
+<% String gebruikersnaam =  request.getParameter("gebruikersnaam");
+   String naam = request.getParameter("naam");
+   String emailadres = request.getParameter("emailadres");
 %>
 <table id ="gegevens">
   <tr>
-    <td>Voornaam</td>
-    <td><%= voornaam %></td>
+    <td>Gebruikersnaam</td>
+    <td><%= gebruikersnaam %></td>
   </tr>
   <tr>
-    <td>Achternaam</td>
-    <td><%= achternaam %></td>
+    <td>Naam</td>
+    <td><%= naam %></td>
   </tr>
   <tr>
-    <td>Adres</td>
-    <td><%= adres %></td>
+    <td>Emailadres</td>
+    <td><%= emailadres %></td>
   </tr>
 </table>
 </body>

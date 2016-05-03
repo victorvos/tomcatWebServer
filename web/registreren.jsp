@@ -27,16 +27,16 @@
     <div class="ex">
             <table style="with: 50%">
                 <tr>
-                    <td>Voornaam</td>
-                    <td><input type="text" name="voornaam" /></td>
+                    <td>Gebruikersnaam</td>
+                    <td><input type="text" name="gebruikersnaam" /></td>
                 </tr>
                 <tr>
-                    <td>Achternaam</td>
-                    <td><input type="text" name="achternaam" /></td>
+                    <td>Naam</td>
+                    <td><input type="text" name="naam" /></td>
                 </tr>
                 <tr>
-                    <td>Adres</td>
-                    <td><input type="text" name="adres" /></td>
+                    <td>Emailadres</td>
+                    <td><input type="text" name="emailadres" /></td>
                 </tr>
                 <tr>
                     <td>Password</td>
