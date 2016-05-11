@@ -28,19 +28,19 @@
             <table style="with: 50%">
                 <tr>
                     <td>Gebruikersnaam</td>
-                    <td><input type="text" name="gebruikersnaam" value="${model.User.username}"/></td>
+                    <td><input type="text" name="gebruikersnaam" value="${cookie.gebruikersnaam.value}"/></td>
                 </tr>
                 <tr>
                     <td>Naam</td>
-                    <td><input type="text" name="naam" value="${model.User.name}"/></td>
+                    <td><input type="text" name="naam" value="${cookie.naam.value}"/></td>
                 </tr>
                 <tr>
                     <td>Emailadres</td>
-                    <td><input type="text" name="emailadres" value="${model.User.email}"/></td>
+                    <td><input type="text" name="emailadres" value="${cookie.emailadres.value}"/></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="pass1" value="${model.User.password}"/></td>
+                    <td><input type="password" name="pass1" value="${cookie.password.value}"/></td>
                 </tr>
                 <tr>
                     <td>Password nogmaals</td>

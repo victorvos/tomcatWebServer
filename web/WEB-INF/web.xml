@@ -6,11 +6,11 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
     <servlet>
-        <servlet-name>welcome</servlet-name>
-        <servlet-class>nl.hu.sp.lesson2.dynamicexample.DynamicServlet</servlet-class>
+        <servlet-name>welcome.jsp</servlet-name>
+        <jsp-file>/welcome.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>welcome</servlet-name>
+        <servlet-name>welcome.jsp</servlet-name>
         <url-pattern>/welcome.do</url-pattern>
     </servlet-mapping>
 

@@ -23,19 +23,19 @@
 
             for(int i = 0; i < cookies.length; i++) {
                 Cookie c = cookies[i];
-                if (c.getName().equals("cookienaam")) {
-                    out.println("Hallo " + naam + " uw emailadres: " + emailadres  "is Geregistreerd !");
+                if (c.getName().equals("naam")) {
+                    out.println("Hallo " + c.getValue() + " uw emailadres: " + emailadres + " is Geregistreerd !");
                             foundCookie = true;
                 }
             }
 
             if (!foundCookie) {
-                Cookie c = new Cookie("cookiename", "cookievalue");
+                Cookie c = new Cookie("cookienaam", "cookievalue");
                 c.setMaxAge(24*60*60);
                 response.addCookie(c);
             }
 %>
-        <h1>Welcome, <%= gebruikersnaam %></h1>
+
   <br>
           <table id ="gegevens">
                 <tr>

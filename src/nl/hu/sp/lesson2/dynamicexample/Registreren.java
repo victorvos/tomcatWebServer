@@ -57,9 +57,11 @@ public class Registreren extends HttpServlet {
             User user = new User(gebruikersnaam, password1, emailadres, naam);
             users.add(user);
 
-            Cookie cookie = new Cookie("cookienaam", "cookievalue");
-            response.addCookie(cookie);
-            cookie.setValue(emailadres);
+            response.addCookie(new Cookie("emailadres", emailadres));
+            response.addCookie(new Cookie("gebruikersnaam", gebruikersnaam));
+            response.addCookie(new Cookie("naam", naam));
+            response.addCookie(new Cookie("password", password1));
+
 
             rd = request.getRequestDispatcher("welcome.jsp");
             rd.forward(request, response);
