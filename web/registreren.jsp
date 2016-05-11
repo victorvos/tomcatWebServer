@@ -22,25 +22,25 @@
     }
 </style>
 <body>
-    <form action="registreren.do" method="post">
+    <form action="registreren.do" method="get">
     <h1>Registratie</h1>
     <div class="ex">
             <table style="with: 50%">
                 <tr>
                     <td>Gebruikersnaam</td>
-                    <td><input type="text" name="gebruikersnaam" /></td>
+                    <td><input type="text" name="gebruikersnaam" value="${model.User.username}"/></td>
                 </tr>
                 <tr>
                     <td>Naam</td>
-                    <td><input type="text" name="naam" /></td>
+                    <td><input type="text" name="naam" value="${model.User.name}"/></td>
                 </tr>
                 <tr>
                     <td>Emailadres</td>
-                    <td><input type="text" name="emailadres" /></td>
+                    <td><input type="text" name="emailadres" value="${model.User.email}"/></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="pass1" /></td>
+                    <td><input type="password" name="pass1" value="${model.User.password}"/></td>
                 </tr>
                 <tr>
                     <td>Password nogmaals</td>

@@ -6,21 +6,21 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
     <servlet>
-        <servlet-name>Dynamic Example Servlet</servlet-name>
-        <servlet-class>nl.hu.sp.lesson2.dynamicexample.DynamicServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Dynamic Example Servlet</servlet-name>
-        <url-pattern>/DynamicServlet.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>welcome</servlet-name>
         <servlet-class>nl.hu.sp.lesson2.dynamicexample.DynamicServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>welcome</servlet-name>
         <url-pattern>/welcome.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Dynamic Example Servlet</servlet-name>
+        <servlet-class>nl.hu.sp.lesson2.dynamicexample.DynamicServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dynamic Example Servlet</servlet-name>
+        <url-pattern>/DynamicServlet.do</url-pattern>
     </servlet-mapping>
 
     <servlet>

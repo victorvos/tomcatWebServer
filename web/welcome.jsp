@@ -13,23 +13,43 @@
   </style>
 </head>
 <body>
-<% String gebruikersnaam =  request.getParameter("gebruikersnaam");
-   String naam = request.getParameter("naam");
-   String emailadres = request.getParameter("emailadres");
+<%
+         String gebruikersnaam =  request.getParameter("gebruikersnaam");
+         String naam = request.getParameter("naam");
+         String emailadres = request.getParameter("emailadres");
+
+            Cookie[] cookies = request.getCookies();
+            boolean foundCookie = false;
+
+            for(int i = 0; i < cookies.length; i++) {
+                Cookie c = cookies[i];
+                if (c.getName().equals("cookienaam")) {
+                    out.println("Hallo " + naam + " uw emailadres: " + emailadres  "is Geregistreerd !");
+                            foundCookie = true;
+                }
+            }
+
+            if (!foundCookie) {
+                Cookie c = new Cookie("cookiename", "cookievalue");
+                c.setMaxAge(24*60*60);
+                response.addCookie(c);
+            }
 %>
-<table id ="gegevens">
-  <tr>
-    <td>Gebruikersnaam</td>
-    <td><%= gebruikersnaam %></td>
-  </tr>
-  <tr>
-    <td>Naam</td>
-    <td><%= naam %></td>
-  </tr>
-  <tr>
-    <td>Emailadres</td>
-    <td><%= emailadres %></td>
-  </tr>
-</table>
+        <h1>Welcome, <%= gebruikersnaam %></h1>
+  <br>
+          <table id ="gegevens">
+                <tr>
+                  <td>Gebruikersnaam</td>
+                  <td><%= gebruikersnaam %></td>
+                </tr>
+                <tr>
+                  <td>Naam</td>
+                  <td><%= naam %></td>
+                </tr>
+                <tr>
+                  <td>Emailadres</td>
+                  <td><%= emailadres %></td>
+                </tr>
+          </table>
 </body>
 </html>
