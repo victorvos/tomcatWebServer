@@ -6,12 +6,12 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
     <servlet>
-        <servlet-name>welcome.jsp</servlet-name>
-        <jsp-file>/welcome.jsp</jsp-file>
+        <servlet-name>index.jsp</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>welcome.jsp</servlet-name>
-        <url-pattern>/welcome.do</url-pattern>
+        <servlet-name>index.jsp</servlet-name>
+        <url-pattern>/index.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
