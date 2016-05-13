@@ -14,42 +14,38 @@
 </head>
 <body>
 <%
-         String gebruikersnaam =  request.getParameter("gebruikersnaam");
-         String naam = request.getParameter("naam");
-         String emailadres = request.getParameter("emailadres");
-
-            Cookie[] cookies = request.getCookies();
-            boolean foundCookie = false;
-
-            for(int i = 0; i < cookies.length; i++) {
-                Cookie c = cookies[i];
-                if (c.getName().equals("naam")) {
-                    out.println("Hallo " + c.getValue() + " uw emailadres: " + emailadres + " is Geregistreerd !");
-                            foundCookie = true;
-                }
-            }
-
-            if (!foundCookie) {
-                Cookie c = new Cookie("cookienaam", "cookievalue");
-                c.setMaxAge(24*60*60);
-                response.addCookie(c);
-            }
+    if ((session.getAttribute("user") == null) || (session.getAttribute("user") == "")) {
+        out.println("You are not logged in");
+    }
+    else {
+        out.print("Welkom op jou Blog ");
+    }
 %>
-
+${user.name}
   <br>
           <table id ="gegevens">
                 <tr>
-                  <td>Gebruikersnaam</td>
-                  <td><%= gebruikersnaam %></td>
+                  <td>Gebruikersnaam:</td>
+                  <td>${user.username}</td>
                 </tr>
                 <tr>
-                  <td>Naam</td>
-                  <td><%= naam %></td>
+                  <td>Naam:</td>
+                  <td>${user.name}</td>
                 </tr>
                 <tr>
-                  <td>Emailadres</td>
-                  <td><%= emailadres %></td>
+                  <td>Emailadres:</td>
+                  <td>${user.email}</td>
                 </tr>
           </table>
+<br>
+<br>
+    <form action="welcome.jsp">
+        <title>
+            Blogpost
+        </title>
+        <textarea name="text">
+
+        </textarea>
+    </form>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package nl.hu.sp.lesson2.dynamicexample;
 
 import model.User;
+import model.Blog;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  */
 public class Registreren extends HttpServlet {
     private String gebruikersnaam, naam, emailadres, password1, password2;
+    private String text
 
     public static Cookie getCookie(HttpServletRequest request, String name) {
         if (request.getCookies() != null) {
@@ -37,6 +39,8 @@ public class Registreren extends HttpServlet {
         password1 = request.getParameter("pass1");
         password2 = request.getParameter("pass2");
 
+        text =
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
@@ -55,12 +59,15 @@ public class Registreren extends HttpServlet {
             HttpSession session = request.getSession(true);
             ArrayList<User> users = new ArrayList<User>();
             User user = new User(gebruikersnaam, password1, emailadres, naam);
+            Blog blog = new blog()
             users.add(user);
 
-            response.addCookie(new Cookie("emailadres", emailadres));
-            response.addCookie(new Cookie("gebruikersnaam", gebruikersnaam));
-            response.addCookie(new Cookie("naam", naam));
-            response.addCookie(new Cookie("password", password1));
+//            response.addCookie(new Cookie("emailadres", emailadres));
+//            response.addCookie(new Cookie("gebruikersnaam", gebruikersnaam));
+//            response.addCookie(new Cookie("naam", naam));
+//            response.addCookie(new Cookie("password", password1));
+
+            session.setAttribute("user", user);
 
 
             rd = request.getRequestDispatcher("welcome.jsp");
