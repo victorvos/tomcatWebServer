@@ -10,13 +10,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import static java.util.logging.Logger.global;
+
 
 /**
  * Created by Victor on 26-4-2016.
  */
 public class Registreren extends HttpServlet {
     private String gebruikersnaam, naam, emailadres, password1, password2;
-
+    ArrayList<User> userList;
 
     public static Cookie getCookie(HttpServletRequest request, String name) {
         if (request.getCookies() != null) {
@@ -27,6 +29,10 @@ public class Registreren extends HttpServlet {
             }
         }
         return null;
+    }
+
+    public void init(){
+        userList = new ArrayList<>();
     }
 
 
@@ -47,7 +53,7 @@ public class Registreren extends HttpServlet {
 
         if(gebruikersnaam.isEmpty()||naam.isEmpty()||emailadres.isEmpty()|| password1.isEmpty()||password2.isEmpty())        {
             rd = request.getRequestDispatcher("registreren.jsp");
-            out.println("<font color=red>Please fill all the fields</font>");
+            out.println("<font color=red>Vul alle velden in aub !</font>");
             rd.include(request, response);
         }
         else if (!password1.equals(password2)) {
@@ -56,10 +62,9 @@ public class Registreren extends HttpServlet {
             rd.include(request, response);
         } else {
             HttpSession session = request.getSession(true);
-            ArrayList<User> users = new ArrayList<User>();
             User user = new User(gebruikersnaam, password1, emailadres, naam);
-            users.add(user);
-
+            userList.add(user);
+            session.setAttribute("userlist", userList);
             session.setAttribute("user", user);
 
 //            response.addCookie(new Cookie("emailadres", emailadres));
