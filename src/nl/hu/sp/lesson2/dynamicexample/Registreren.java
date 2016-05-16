@@ -36,7 +36,7 @@ public class Registreren extends HttpServlet {
     }
 
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         gebruikersnaam = request.getParameter("gebruikersnaam");
@@ -49,19 +49,19 @@ public class Registreren extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         RequestDispatcher rd = null;
-
+        HttpSession session = request.getSession(true);
 
         if(gebruikersnaam.isEmpty()||naam.isEmpty()||emailadres.isEmpty()|| password1.isEmpty()||password2.isEmpty())        {
             rd = request.getRequestDispatcher("registreren.jsp");
-            out.println("<font color=red>Vul alle velden in aub !</font>");
+            request.setAttribute("message", "<font color=red>Vul alle velden in aub !</font>");
             rd.include(request, response);
         }
         else if (!password1.equals(password2)) {
             rd = request.getRequestDispatcher("registreren.jsp");
-            out.println("<font color=red>Wachtwoorden komen niet overeen !</font>");
+            request.setAttribute("message", "<font color=red>Wachtwoorden komen niet overeen !</font>");
             rd.include(request, response);
         } else {
-            HttpSession session = request.getSession(true);
+
             User user = new User(gebruikersnaam, password1, emailadres, naam);
             userList.add(user);
             session.setAttribute("userlist", userList);
@@ -72,7 +72,7 @@ public class Registreren extends HttpServlet {
 //            response.addCookie(new Cookie("naam", naam));
 //            response.addCookie(new Cookie("password", password1));
 
-            rd = request.getRequestDispatcher("welcome.jsp");
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }

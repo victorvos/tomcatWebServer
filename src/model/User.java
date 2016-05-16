@@ -34,6 +34,8 @@ public class User {
         return email;
     }
 
+    public String getPW(){ return password; }
+
     public boolean checkPassword(String pw) {
         boolean checkpw = false;
         if (pw.equals(password)) {

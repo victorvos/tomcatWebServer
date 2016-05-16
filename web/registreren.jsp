@@ -51,8 +51,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -96,39 +94,40 @@
             <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
             <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
             <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-            <form name="sentMessage" action="registreren.do" method="get">
+            <form name="sentMessage" action="registreren.do" method="post">
+                <p>${message}</p>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Gebruikersnaam</label>
-                        <input type="text" placeholder="Gebruikersnaam" name="gebruikersnaam" required data-validation-required-message="Please enter your name.">
+                        <input type="text" placeholder="Gebruikersnaam" name="gebruikersnaam" required data-validation-required-message="Name">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Email Address</label>
-                        <input type="text" placeholder="Emailadres" name="emailadres" required data-validation-required-message="Please enter your email address.">
+                        <label>Emailadres</label>
+                        <input type="text" placeholder="Emailadres" name="emailadres" required data-validation-required-message="Emailadres">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Naam</label>
-                        <input type="text" placeholder="Naam" name="naam" required data-validation-required-message="Please enter your phone number.">
+                        <input type="text" placeholder="Naam" name="naam" required data-validation-required-message="Phone number">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Password</label>
-                        <input type="password" placeholder="password" name="pass1" required data-validation-required-message="Please enter your password.">
+                        <label>Wachtwoord</label>
+                        <input type="password" placeholder="Wachtwoord" name="pass1" required data-validation-required-message="Wachtwoord">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Password nogmaals</label>
-                        <input type="password" placeholder="password nogmaals" name="pass2" required data-validation-required-message="Nogmaals">
+                        <label>Wachtwoord nogmaals</label>
+                        <input type="password" placeholder="Wachtwoord nogmaals" name="pass2" required data-validation-required-message="Wachtwoord nogmaals">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
