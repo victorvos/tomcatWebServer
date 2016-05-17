@@ -19,8 +19,7 @@ public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Object x =  getServletContext().getAttribute("user");
-        User user = (User)x;
+
 
         gebruikersnaam = request.getParameter("gebruikersnaam");
         password = request.getParameter("password");
@@ -30,9 +29,11 @@ public class LoginServlet extends HttpServlet {
 
         RequestDispatcher rd = null;
         HttpSession session = request.getSession(true);
+        User user = (User) session.getAttribute("user");
 
-        String passwordCheck = user.getUsername();
-        String username = user.getPW();
+        String passwordCheck = user.getPassword();
+        String username = user.getUsername();
+
 
         if (gebruikersnaam.isEmpty()||password.isEmpty()) {
             rd = request.getRequestDispatcher("index.jsp");
@@ -43,11 +44,10 @@ public class LoginServlet extends HttpServlet {
                 rd = request.getRequestDispatcher("index.jsp");
                 request.setAttribute("message", "<font color=red>Gebruikersnaam en Wachtwoord combinatie is niet bekend</font>");
                 rd.include(request, response);
+            } else {
+                rd = request.getRequestDispatcher("welcome.jsp");
+                rd.forward(request, response);
             }
-        }
-        else {
-            rd = request.getRequestDispatcher("welcome.jsp");
-            rd.forward(request, response);
         }
     }
 }

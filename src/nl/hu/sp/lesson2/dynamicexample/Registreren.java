@@ -64,7 +64,8 @@ public class Registreren extends HttpServlet {
 
             User user = new User(gebruikersnaam, password1, emailadres, naam);
             userList.add(user);
-            session.setAttribute("userlist", userList);
+            getServletContext().setAttribute("userList", userList);
+
             session.setAttribute("user", user);
 
 //            response.addCookie(new Cookie("emailadres", emailadres));
