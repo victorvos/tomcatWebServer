@@ -15,10 +15,9 @@ import java.io.PrintWriter;
  * Created by Eigenaar on 13-5-2016.
  */
 public class LoginServlet extends HttpServlet {
-
-
     private String gebruikersnaam, password;
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Object x =  getServletContext().getAttribute("user");
         User user = (User)x;
@@ -28,23 +27,24 @@ public class LoginServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession(true);
+
         RequestDispatcher rd = null;
+        HttpSession session = request.getSession(true);
 
         String passwordCheck = user.getUsername();
         String username = user.getPW();
 
-        if (gebruikersnaam.isEmpty() || password.isEmpty()) {
+        if (gebruikersnaam.isEmpty()||password.isEmpty()) {
             rd = request.getRequestDispatcher("index.jsp");
             request.setAttribute("message", "<font color=red>Vul alle velden in aub !</font>");
             rd.include(request, response);
-        } else if (user != null){
-                if(!password.equals(passwordCheck) || !gebruikersnaam.equals(username)){
-                    rd = request.getRequestDispatcher("index.jsp");
-                    request.setAttribute("message", "<font color=red>Gebruikersnaam en Wachtwoord combinatie is niet bekend</font>");
-                    rd.include(request, response);
-                }
+        } else if (user != null) {
+            if (!password.equals(passwordCheck) && !gebruikersnaam.equals(username)) {
+                rd = request.getRequestDispatcher("index.jsp");
+                request.setAttribute("message", "<font color=red>Gebruikersnaam en Wachtwoord combinatie is niet bekend</font>");
+                rd.include(request, response);
             }
+        }
         else {
             rd = request.getRequestDispatcher("welcome.jsp");
             rd.forward(request, response);

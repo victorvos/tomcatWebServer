@@ -22,7 +22,6 @@ public class DynamicServlet extends HttpServlet {
         String operator = request.getParameter("operator");
         Integer result = 0;
 
-
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
