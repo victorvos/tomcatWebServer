@@ -4,6 +4,8 @@ import model.User;
 
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -31,8 +33,10 @@ public class Registreren extends HttpServlet {
         return null;
     }
 
-    public void init(){
+    public void init(ServletConfig config) throws ServletException{
+        super.init(config);
         userList = new ArrayList<>();
+        getServletContext().setAttribute("userList", userList);
     }
 
 
@@ -64,7 +68,6 @@ public class Registreren extends HttpServlet {
 
             User user = new User(gebruikersnaam, password1, emailadres, naam);
             userList.add(user);
-            getServletContext().setAttribute("userList", userList);
 
             session.setAttribute("user", user);
 
