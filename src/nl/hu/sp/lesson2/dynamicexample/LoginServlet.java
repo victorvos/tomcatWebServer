@@ -26,9 +26,7 @@ public class LoginServlet extends HttpServlet {
         gebruikersnaam = request.getParameter("gebruikersnaam");
         password = request.getParameter("password");
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
+        HttpSession session = request.getSession();
         RequestDispatcher rd = null;
 
         BlogService service = ServiceProvider.getBlogService();
@@ -43,7 +41,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("message", "<font color=red>Gebruikersnaam en Wachtwoord combinatie is niet bekend</font>");
             rd.include(request, response);
         } else {
-            request.setAttribute("user", user);
+            session.setAttribute("loggedUser", user);
             rd = request.getRequestDispatcher("/blogger/myaccount.jsp");
             rd.forward(request, response);
         }

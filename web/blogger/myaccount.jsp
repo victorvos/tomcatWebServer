@@ -53,13 +53,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="../index.jsp">Inloggen</a>
-                </li>
-                <li>
-                    <a href="../registreren.jsp">Registreren</a>
+                    <a href="/index.jsp">Logout</a>
                 </li>
                 <li>
                     <a href="/blogger/myaccount.jsp">Post Maken</a>
+                </li>
+                <li>
+                    <a href="/blogger/myposts.jsp">Mijn Posts</a>
                 </li>
             </ul>
         </div>
@@ -94,22 +94,6 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <table id ="Gegevens">
-                <center>
-                    <tr>
-                        <td>Gebruikersnaam:</td>
-                        <td>
-                    </tr>
-                    <tr>
-                        <td>Naam:</td>
-                        <td>
-                    </tr>
-                    <tr>
-                        <td>Emailadres:</td>
-                        <td>
-                    </tr>
-                </center>
-            </table>
             <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
             <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
             <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
@@ -134,18 +118,6 @@
                         <button type="submit" value="submit">submit</button>
                     </div>
                 </div>
-                <%
-                    ArrayList<BlogPost> allPosts = ServiceProvider.getBlogService().getAllPosts();
-
-                    request.setAttribute("allPosts", allPosts);
-                %>
-
-                <c:forEach var="post" items="${allPosts}">
-                    <div class="post">
-                        <h1>${post.subject}</h1>
-                        <p>${post.text}</p>
-                    </div>
-                </c:forEach>
             </form>
         </div>
     </div>

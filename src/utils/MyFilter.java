@@ -13,8 +13,9 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp,
                          FilterChain chain) throws IOException, ServletException {
         HttpServletRequest r2 = (HttpServletRequest)req;
-        if (r2.getSession().getAttribute("user") == null) {
-            r2.getRequestDispatcher("/index.jsp").forward(req, resp);
+        if (r2.getSession().getAttribute("loggedUser") == null) {
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            return;
         } else {
             chain.doFilter(req, resp);
         }

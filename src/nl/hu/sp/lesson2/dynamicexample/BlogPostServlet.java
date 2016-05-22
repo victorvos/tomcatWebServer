@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -24,16 +25,16 @@ public class BlogPostServlet extends HttpServlet{
         onderwerp = request.getParameter("subject");
         text = request.getParameter("text");
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
 
         RequestDispatcher rd = null;
 
         BlogService service = ServiceProvider.getBlogService();
-        User userSession = (User) request.getAttribute("user");
-        User user = service.logingUser(userSession.getUsername(), userSession.getPassword());
+        User userSession = (User) session.getAttribute("loggedUser");
 
-        if (user == null) {
+//        User user = service.logingUser(userSession.getUsername(), userSession.getPassword());
+
+        if (userSession == null) {
             rd = request.getRequestDispatcher("index.jsp");
             request.setAttribute("message", "<font color=red>U bent nog niet ingelogd</font>");
             rd.include(request, response);
@@ -42,7 +43,7 @@ public class BlogPostServlet extends HttpServlet{
             request.setAttribute("message", "<font color=red>Vul alle velden in aub !</font>");
             rd.include(request, response);
         } else {
-            service.addBlogPostForUser(onderwerp, text, user);
+            service.addBlogPostForUser(onderwerp, text, userSession);
             rd = request.getRequestDispatcher("/blogger/myaccount.jsp");
             rd.forward(request, response);
         }
