@@ -1,5 +1,7 @@
 package nl.hu.sp.lesson2.dynamicexample;
 
+import model.BlogService;
+import model.ServiceProvider;
 import model.User;
 
 
@@ -20,24 +22,6 @@ import static java.util.logging.Logger.global;
  */
 public class Registreren extends HttpServlet {
     private String gebruikersnaam, naam, emailadres, password1, password2;
-    ArrayList<User> userList;
-
-    public static Cookie getCookie(HttpServletRequest request, String name) {
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals(name)) {
-                    return cookie;
-                }
-            }
-        }
-        return null;
-    }
-
-    public void init(ServletConfig config) throws ServletException{
-        super.init(config);
-        userList = new ArrayList<>();
-        getServletContext().setAttribute("userList", userList);
-    }
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,7 +37,7 @@ public class Registreren extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         RequestDispatcher rd = null;
-        HttpSession session = request.getSession(true);
+        BlogService service = ServiceProvider.getBlogService();
 
         if(gebruikersnaam.isEmpty()||naam.isEmpty()||emailadres.isEmpty()|| password1.isEmpty()||password2.isEmpty())        {
             rd = request.getRequestDispatcher("registreren.jsp");
@@ -65,17 +49,7 @@ public class Registreren extends HttpServlet {
             request.setAttribute("message", "<font color=red>Wachtwoorden komen niet overeen !</font>");
             rd.include(request, response);
         } else {
-
-            User user = new User(gebruikersnaam, password1, emailadres, naam);
-            userList.add(user);
-
-            session.setAttribute("user", user);
-
-//            response.addCookie(new Cookie("emailadres", emailadres));
-//            response.addCookie(new Cookie("gebruikersnaam", gebruikersnaam));
-//            response.addCookie(new Cookie("naam", naam));
-//            response.addCookie(new Cookie("password", password1));
-
+            service.registerUser(gebruikersnaam, password1, emailadres, naam);
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

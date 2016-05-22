@@ -1,6 +1,7 @@
 package model;
 
 
+
 import java.util.ArrayList;
 
 /**
@@ -9,28 +10,54 @@ import java.util.ArrayList;
 public class BlogService {
     private ArrayList<User> userList = new ArrayList<User>();
 
-    public addBlogPostForUser(String sub, String txt, User u){
-        BlogPost bp = new BlogPost(sub, txt);
-        u.addBlogPost(bp);
+    public void addBlogPostForUser(String sub, String txt, User u){
+        if(!sub.equals(null)||!sub.equals("") && !txt.equals(null)||!txt.equals("")){
+            BlogPost bp = new BlogPost(sub, txt);
+            u.addBlogPost(bp);
+        }
+        else{
+            throw new IllegalArgumentException("onderwerp en text moeten worden ingevuld");
+        }
     }
 
-    public boolean registerUser(String uNM, String pw, String em, String rN){
+    public ArrayList<BlogPost> getAllPosts(){
+        ArrayList<BlogPost> allPosts = new ArrayList<BlogPost>();
+        for(User user : userList ){
+            allPosts.addAll(user.getMyPosts());
+        }
+        return allPosts;
+    }
+
+    public boolean registerUser(String uNm, String pw, String em, String rN) {
         boolean geregistreerd = false;
-        User user = new User(uNM, pw, em, rN);
-        if (userList.contains(user)){
+        User user = new User(uNm, pw, em, rN);
+        if (userList.isEmpty()) {
+            userList.add(user);
             geregistreerd = true;
+        }
+        else{
+            for (User u : userList) {
+                if (u.getUsername().equals(uNm)) {
+                    geregistreerd = false;
+                } else {
+                    geregistreerd = true;
+                }
+            }
+            if (geregistreerd){
+                userList.add(user);
+            }
         }
         return geregistreerd;
     }
 
+
     public User logingUser(String uNm, String pw){
+        User x = null;
         for (User u : userList){
-            if(u.checkPassword(pw) && u.getUsername().equals(uNm)){
-                return u;
-            }
-            else{
-                return null;
+            if(u.getUsername().equals(uNm) && u.getPassword().equals(pw)){
+                x = u;
             }
         }
+        return x;
     }
 }

@@ -2,6 +2,7 @@ package model;
 
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
+import java.util.jar.Pack200;
 
 /**
  * Created by Eigenaar on 2-5-2016.
@@ -12,7 +13,7 @@ public class User {
     private String password = null;
     private String email = null;
     private String name = null;
-    ArrayList<BlogPost> blog = new ArrayList<BlogPost>();
+    ArrayList<BlogPost> blogPosts = new ArrayList<BlogPost>();
 
 
     public User(String uNm, String pw, String em, String nm) {
@@ -36,7 +37,7 @@ public class User {
 
     public String getPassword(){ return password; }
 
-    public boolean checkPassword(String pw) {
+   public boolean checkPassword(String pw) {
         boolean checkpw = false;
         if (pw.equals(password)) {
             checkpw = true;
@@ -45,11 +46,11 @@ public class User {
     }
 
     public void addBlogPost(BlogPost bp){
-        blog.add(bp);
+        blogPosts.add(bp);
     }
 
     public ArrayList<BlogPost> getMyPosts(){
-        return blog;
+        return blogPosts;
     }
 }
 

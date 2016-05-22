@@ -62,9 +62,6 @@
                 <li>
                     <a href="registreren.jsp">Registreren</a>
                 </li>
-                <li>
-                    <a href="welcome.jsp">Post Maken</a>
-                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

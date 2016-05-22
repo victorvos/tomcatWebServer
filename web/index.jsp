@@ -63,9 +63,6 @@
                 <li>
                     <a href="registreren.jsp">Registreren</a>
                 </li>
-                <li>
-                    <a href="welcome.jsp">Post Maken</a>
-                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -95,23 +92,18 @@
             <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
             <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
             <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-            <form name="sentMessage" action="index.do" method="get">
+            <form name="sentMessage" action="index.do" method="post">
                 <p>${message}</p>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Gebruikersnaam</label>
-                        <input type="text" placeholder="Gebruikersnaam" name="gebruikersnaam" required data-validation-required-message="Username">
-                        <p class="help-block text-danger"></p>
-                    </div>
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Gebruikersnaam</label>
+                    <input type="text" placeholder="Gebruikersnaam" name="gebruikersnaam" required data-validation-required-message="Username">
+                    <p class="help-block text-danger"></p>
                 </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Wachtwoord</label>
-                        <input type="password" placeholder="Wachtwoord" name="password" required data-validation-required-message="Wachtwoord">
-                        <p class="help-block text-danger"></p>
-                    </div>
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label>Wachtwoord</label>
+                    <input type="password" placeholder="Wachtwoord" name="password" required data-validation-required-message="Wachtwoord">
+                    <p class="help-block text-danger"></p>
                 </div>
-                <br>
                 <div id="success"></div>
                 <div class="row">
                     <div class="form-group col-xs-12">
@@ -119,6 +111,7 @@
                     </div>
                 </div>
             </form>
+            <div></div>
         </div>
     </div>
 </div>
