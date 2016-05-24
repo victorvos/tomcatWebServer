@@ -1,6 +1,8 @@
 <%@ page import="model.ServiceProvider" %>
 <%@ page import="model.BlogPost" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--
   Created by IntelliJ IDEA.
   User: Victor
   Date: 26-4-2016
@@ -113,11 +115,9 @@
                     </div>
                 </div>
                 <%
-
                     ArrayList<BlogPost> allPosts = ServiceProvider.getBlogService().getAllPosts();
 
                     request.setAttribute("allPosts", allPosts);
-
                 %>
                 <c:forEach var="post" items="${allPosts}">
                     <div class="post">
